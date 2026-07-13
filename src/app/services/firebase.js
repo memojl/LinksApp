@@ -1,7 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+import { initializeApp } from "firebase/app";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "firebase/database";
 import { showMessage } from "../hooks/messages";
 //import { variables } from "../core/lib";
 import { prefix } from "../core/constants";

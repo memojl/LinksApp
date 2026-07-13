@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase.js";
 import { alertMessage, showMessage } from "./messages.js";
 console.log("Signin");

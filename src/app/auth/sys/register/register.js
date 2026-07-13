@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../services/firebase.js";
 import { toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";

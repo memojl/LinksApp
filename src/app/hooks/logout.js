@@ -1,4 +1,4 @@
-import { signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { signOut } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { alertMessage, showMessage } from "./messages";
 

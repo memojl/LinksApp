@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "../services/firebase.js";
 import { consoleLocal } from "../functions.js";
 import {navigate} from "../../routes/routes.js";
