@@ -1,2 +1,2 @@
 # LinksApp
-Links personales
+Single Page Application (spa) - CMS Javascript
