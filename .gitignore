@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/node_modules
-package-lock.json
-=======
 # Logs
 logs
 *.log
@@ -31,4 +27,3 @@ dist-ssr
 package-lock.json
 _docs
 #*.bat
->>>>>>> master
