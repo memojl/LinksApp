@@ -8,31 +8,22 @@
             <div class="col-md-10 px-3">
                 <div class="input-group mb-3">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Categoria</button>
-                    <ul class="dropdown-menu" id="cate">
-                        <li><a class="dropdown-item">Aplicación</a></li>
-                        <li><a class="dropdown-item">Entretenimiento</a></li>
-                        <li><a class="dropdown-item">Musica</a></li>
-                        <li><a class="dropdown-item">Repositorio</a></li>
-                        <li><a class="dropdown-item">Red social</a></li>
-                        <li><a class="dropdown-item">Videos</a></li>
-                        <li><a class="dropdown-item">Web</a></li>
-                    </ul>
+                        aria-expanded="false"><i class="bi bi-list"></i> Categoria</button>
+                    <ul class="dropdown-menu" id="listaCate"></ul>
                     <input type="text" class="form-control" id="buscar" placeholder="Buscar..." aria-label="buscar"
                         aria-describedby="button-addon2">
-                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                    <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i> Buscar</button>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 text-center">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    Nuevo
+                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-plus"></i> Nuevo link
                 </button>
             </div>
         </div>
         <div class="row mt-3 links-list">
-            <div class="col-md-12" id="links-list">
+            <div class="col-md-12 links-grid" id="links-list">
                 <p class="text-center">
                     Cargando...
                 </p>

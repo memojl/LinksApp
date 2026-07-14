@@ -9,23 +9,27 @@ export function linksDashboard() {
     const tab = "links";
     const { fecha } = variables();
 
-    const filtrar = async () => {
-        let html = '';
-        const listaCate = document.querySelector('#cate');
+    const filtrar = () => {
+        const listaCate = document.querySelector('#listaCate');
         const buscar = document.querySelector('#buscar');
-        const data = await getData(tab);
-        if(!data){return}
-        const categorias = [...new Set(data.map(item => item.cate))].sort(); console.log(categorias);
-        for (let i = 0; i < categorias.length; i++) {
-            html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
-        }
-        listaCate.innerHTML = html;
         listaCate.addEventListener("click", (e) => {
             const opc = e.target.closest("a");
             if (!opc) { return }
             buscar.placeholder = opc.textContent;
             links(opc.textContent);
         });
+    };
+
+    const listaFiltro = (data) => {
+        let html = '';
+        const listaCate = document.querySelector('#listaCate');
+        //const data = await getData(tab);
+        if (!data) { return }
+        const categorias = [...new Set(data.map(item => item.cate))].sort(); console.log(categorias);
+        for (let i = 0; i < categorias.length; i++) {
+            html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
+        }
+        listaCate.innerHTML = html;
     };
 
     const toggleTitle = () => {
@@ -57,7 +61,7 @@ export function linksDashboard() {
                 confirmButtonText: "Aceptar",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const fila = btn.closest(".card");
+                    const fila = btn.closest(".link-card");
                     const key = fila.getAttribute("key");
                     console.log("Eliminar:", key);
                     deleteData(tab, key);
@@ -86,7 +90,7 @@ export function linksDashboard() {
         document.addEventListener("click", async (e) => {
             const btn = e.target.closest(".btnEdit");
             if (!btn) return;
-            const fila = btn.closest(".card");
+            const fila = btn.closest(".link-card");
             const key = fila.getAttribute("key");
             console.log("Editar:", key);
             localStorage.setItem("Mode", "edit");
@@ -131,6 +135,7 @@ export function linksDashboard() {
     const links = async (b = '') => {
         let html = "";
         const datos = await getData(tab);
+        listaFiltro(datos);
         const filtrado = datos.filter(x => x.cate === b);
         const data = b ? filtrado : datos; console.log(data);
         const productList = document.querySelector("#links-list");
@@ -147,6 +152,27 @@ export function linksDashboard() {
             //if (activo) {
             html += `
             <!--Card-->
+            <div key="${key}" class="link-card">
+                <span class="status ${activo ? 'online' : 'offline'}"></span>
+                <div class="card-icon">
+                    <i class="bi bi-globe2"></i>
+                </div>
+                <a href="${link}" target="_blank">
+                    <h4>${title}</h4>
+                </a>
+                <span class="badge web">${cate}</span>
+                <div class="card-actions">
+                    <button class="btn-action edit btnEdit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+
+                    <button class="btn-action delete btnDelete">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <!--/Card-->
+            <!--Card->
             <div key="${key}" class="card item-icon">
               <div class="btn-icon">
                 <a href="${link}" target="_blank">
@@ -172,17 +198,16 @@ export function linksDashboard() {
         }
         productList.innerHTML = html;
         document.querySelector("#Id").value = Number(Id) + 1;
-        tooltips();
+        //tooltips();
     };
 
     const onLoad = () => {
-        filtrar();
         btnGuardar();
         btnAgregar();
         btnEditar();
         btnBorrar();
         btnCancelar();
-        setTimeout(() => { links(); }, 1000);
+        setTimeout(() => { links(); filtrar();}, 1000);
     }
 
     setTimeout(onLoad, 0);

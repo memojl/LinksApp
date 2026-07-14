@@ -1,12 +1,11 @@
 .links {
-    #links-list {
+    /*#links-list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-content: flex-start;
-    }
-
+    }*/
 
     .item-icon {
         width: 100px;
@@ -51,10 +50,145 @@
     }
 
     .btnEdit {
-        color: #ff7300;
+        color: #dbbb01;
     }
 
     .btnDelete {
         color: #ff0000;
+    }
+
+    /********/
+    #listaCate li a:hover {
+        cursor: pointer;
+    }
+
+    .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 18px;
+        align-content: start;
+    }
+
+    .link-card {
+        position: relative;
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid #edf0f6;
+        overflow: hidden;
+        transition: .25s;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, .05);
+    }
+
+    .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .10);
+    }
+
+    .status {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        top: 14px;
+        right: 14px;
+        border: 2px solid #fff;
+    }
+
+    .online {
+        background: #16d94d;
+    }
+
+    .offline {
+        background: #444;
+    }
+
+    .card-icon {
+        width: 70px;
+        height: 70px;
+        margin: 24px auto 15px;
+        border-radius: 50%;
+        background: #f2f3ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-icon i {
+        font-size: 30px;
+        color: #4f46e5;
+    }
+
+    .link-card h4 {
+        text-align: center;
+        font-size: 21px;
+        font-weight: 600;
+        color: #24263d;
+        margin: 0;
+    }
+
+    .badge {
+        display: block;
+        width: max-content;
+        margin: 14px auto 22px;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: .75rem;
+        font-weight: 600;
+    }
+
+    .web {
+        color: #4f46e5;
+        background: #ebe9ff;
+    }
+
+    .dev {
+        color: #15a05c;
+        background: #dff8ea;
+    }
+
+    .video {
+        color: #ff3b5c;
+        background: #ffe8ee;
+    }
+
+    .framework {
+        color: #8b5cf6;
+        background: #efe5ff;
+    }
+
+    .tool {
+        color: #ff8a00;
+        background: #fff0dc;
+    }
+
+    .card-actions {
+        display: flex;
+        border-top: 1px solid #edf0f6;
+    }
+
+    .btn-action {
+        flex: 1;
+        height: 52px;
+        border: none;
+        background: #fff;
+        cursor: pointer;
+        transition: .25s;
+        font-size: 20px;
+    }
+
+    .btn-action.edit {
+        color: #4f46e5;
+    }
+
+    .btn-action.delete {
+        color: #ff4d4f;
+    }
+
+    .btn-action:hover {
+        background: #f8f9fc;
+    }
+
+    .btn-action:first-child {
+        border-right: 1px solid #edf0f6;
     }
 }
