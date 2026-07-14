@@ -9,6 +9,25 @@ export function linksDashboard() {
     const tab = "links";
     const { fecha } = variables();
 
+    const filtrar = async () => {
+        let html = '';
+        const listaCate = document.querySelector('#cate');
+        const buscar = document.querySelector('#buscar');
+        const data = await getData(tab);
+        if(!data){return}
+        const categorias = [...new Set(data.map(item => item.cate))].sort(); console.log(categorias);
+        for (let i = 0; i < categorias.length; i++) {
+            html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
+        }
+        listaCate.innerHTML = html;
+        listaCate.addEventListener("click", (e) => {
+            const opc = e.target.closest("a");
+            if (!opc) { return }
+            buscar.placeholder = opc.textContent;
+            links(opc.textContent);
+        });
+    };
+
     const toggleTitle = () => {
         const mode = localStorage.getItem("Mode");
         const tit = document.querySelector('#exampleModalLabel');
@@ -109,13 +128,15 @@ export function linksDashboard() {
         });
     }
 
-    const links = async () => {
+    const links = async (b = '') => {
         let html = "";
-        const data = await getData(tab); console.log(data);
+        const datos = await getData(tab);
+        const filtrado = datos.filter(x => x.cate === b);
+        const data = b ? filtrado : datos; console.log(data);
         const productList = document.querySelector("#links-list");
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
-        if (!data) {
+        if (data.length == 0 || !data) {
             document.querySelector("#Id").value = 1;
             productList.innerHTML = '<tr><td colspan="5"><p>No hay links disponibles.</p></td></tr>';
             return;
@@ -155,6 +176,7 @@ export function linksDashboard() {
     };
 
     const onLoad = () => {
+        filtrar();
         btnGuardar();
         btnAgregar();
         btnEditar();
