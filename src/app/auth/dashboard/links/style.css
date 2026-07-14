@@ -32,10 +32,21 @@
         width: 34px;
         height: 34px;
         padding: 5px 9px;
+        display: flex;
     }
 
     .text-link i {
         cursor: pointer;
+    }
+
+    .on {
+        color: #00ff00;
+    }
+
+    .on,
+    .off {
+        font-size: 14px;
+        margin-top: -11px;
     }
 
     .btnEdit {

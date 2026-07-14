@@ -131,6 +131,7 @@ export function linksDashboard() {
                 <a href="${link}" target="_blank">
                     <i class="bi bi-globe"></i>
                 </a>
+                ${activo ? '<i class="bi bi-circle-fill on"></i>' : '<i class="bi bi-circle-fill off"></i>'}
               </div>
               <div class="text-link">
                 <h6>
