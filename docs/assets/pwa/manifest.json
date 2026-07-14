@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"description": "LinksApp - Single Page Application",
 	"scope": "/",
-	"start_url": "https://multiportal.github.io/LinksApp/",
+	"start_url": "https://memojl.github.io/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#000000",
