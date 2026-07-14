@@ -4,6 +4,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
+        align-content: flex-start;
     }
 
 
@@ -18,12 +19,12 @@
     }
 
     .item-icon a {
-        color: #0000ff;
+        color: #221c69;
         text-decoration: none;
     }
 
     .item-icon a:hover {
-        color: #01014b;
+        color: #5e0c94;
     }
 
     .btn-icon {

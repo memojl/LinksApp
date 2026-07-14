@@ -1,6 +1,6 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
 import { variables } from '../../../core/lib';
-import { getFormData } from '../../../functions';
+import { getFormData, tooltips } from '../../../functions';
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 import './style.css';
@@ -140,8 +140,8 @@ export function linksDashboard() {
                     </a>
                 </h6>
                 <span>
-                    <i class="bi bi-pencil-square btnEdit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i> | 
-                    <i class="bi bi-trash btnDelete"></i>
+                    <i class="bx bx-pencil btnEdit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i> | 
+                    <i class="bx bx-trash btnDelete"></i>
                 </span>
               </div>
             </div>
@@ -151,6 +151,7 @@ export function linksDashboard() {
         }
         productList.innerHTML = html;
         document.querySelector("#Id").value = Number(Id) + 1;
+        tooltips();
     };
 
     const onLoad = () => {

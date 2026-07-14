@@ -173,7 +173,7 @@ export const getFormData = (form, key = "name") =>
       ])
   );
 
-const tooltips = () => {
+export const tooltips = () => {
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); console.log(tooltipTriggerList);
   tooltipTriggerList.forEach(el => {
     new bootstrap.Tooltip(el);
