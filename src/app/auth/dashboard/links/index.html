@@ -5,12 +5,29 @@
     </div>
     <div id="content" class="container-fluid">
         <div class="row">
-            <div class="col-md-10"></div>
+            <div class="col-md-10 px-3">
+                <div class="input-group mb-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Categoria</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item">Aplicación</a></li>
+                        <li><a class="dropdown-item">Entretenimiento</a></li>
+                        <li><a class="dropdown-item">Musica</a></li>
+                        <li><a class="dropdown-item">Repositorio</a></li>
+                        <li><a class="dropdown-item">Red social</a></li>
+                        <li><a class="dropdown-item">Videos</a></li>
+                        <li><a class="dropdown-item">Web</a></li>
+                    </ul>
+                    <input type="text" class="form-control" placeholder="Buscar..." aria-label="buscar"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </div>
             <div class="col-md-2">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    Agregar
+                    Nuevo
                 </button>
 
                 <!-- Modal -->

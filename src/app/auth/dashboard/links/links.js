@@ -128,7 +128,7 @@ export function linksDashboard() {
             <!--Card-->
             <div key="${key}" class="card item-icon">
               <div class="btn-icon">
-                <a href="${link}" data-bs-toggle="tooltip" data-bs-placement="top" title="${desc} | ${cate}" target="_blank">
+                <a href="${link}" target="_blank">
                     <i class="bi bi-globe"></i>
                 </a>
               </div>
