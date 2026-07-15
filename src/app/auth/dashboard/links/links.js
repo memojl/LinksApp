@@ -35,7 +35,8 @@ export function linksDashboard() {
         if (!listaCate) { return; }
         listaCate.addEventListener("click", (e) => {
             const opc = e.target.closest("a");
-            if (!opc) { return }
+            if (!opc) { return; }
+            buscar.value = null;
             buscar.placeholder = opc.textContent;
             links(opc.textContent);
         });
@@ -45,7 +46,7 @@ export function linksDashboard() {
         let html = '';
         const listaCate = document.querySelector('#listaCate');
         if (!data) { return }
-        const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log',categorias);
+        const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log', categorias);
         for (let i = 0; i < categorias.length; i++) {
             html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
         }
@@ -140,7 +141,7 @@ export function linksDashboard() {
                 document.querySelector("#create_at").value = fecha;
                 document.querySelector("#uid").value = user.uid;
             }
-            const body = getFormData(form, "id"); consoleLocal('log',body);
+            const body = getFormData(form, "id"); consoleLocal('log', body);
             if (mode == "add") {
                 createData(tab, body);
             } else {
@@ -157,7 +158,7 @@ export function linksDashboard() {
         const datos = await getData(tab);
         listaFiltro(datos);
         const filtrado = c == 'B' ? datos.filter(x => x.title === b) : datos.filter(x => x.cate === b);
-        const data = b ? filtrado : datos; consoleLocal('log',data);
+        const data = b ? filtrado : datos; consoleLocal('log', data);
         const productList = document.querySelector("#links-list");
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
@@ -171,7 +172,7 @@ export function linksDashboard() {
         for (const item of data) {
             var { Id, key, title, link, desc, cate, uid, create_at, activo } = item;
             if (uid == user.uid) {
-            html += `
+                html += `
             <!--Card-->
             <div key="${key}" class="link-card">
                 <span class="status ${activo ? 'online' : 'offline'}"></span>
