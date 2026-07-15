@@ -4,10 +4,22 @@ import { consoleLocal, toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
 import { navigate } from "../../../../routes/routes.js";
+import { variables } from "../../../core/lib.js";
 import Html from './index.html?raw';
 import './style.css';
 
+
 export function login() {
+  const { protocol } = variables();
+
+  const hiddenRegisG = () => {
+    const r = document.querySelector('#regis');
+    const g = document.querySelector('#googleLogin');
+    if (protocol == 'chrome-extension:') {
+      r.style.display = 'none';
+      g.style.display = 'none';
+    }
+  };
 
   const btnIngresar = () => {
     const form = document.querySelector('form#login-form');
@@ -46,6 +58,7 @@ export function login() {
     toggleEye();
     btnIngresar();
     googleLogin();
+    hiddenRegisG();
   }
 
   setTimeout(onLoad, 0);

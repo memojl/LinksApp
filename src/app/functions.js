@@ -150,8 +150,8 @@ export async function comprobarVersion(v) {
 }
 
 export async function obtenerManifest() {
-  const { dominio, path_url } = variables();
-  const data = await fetch(`${dominio}${path_url}assets/pwa/manifest.json`).then(r => r.json());
+  const { page_url } = variables();
+  const data = await fetch(`${page_url}assets/pwa/manifest.json`).then(r => r.json());
   return data;
 }
 
