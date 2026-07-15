@@ -1,4 +1,4 @@
-import { router } from '../app/functions.js';
+import { consoleLocal, router } from '../app/functions.js';
 import { loading } from '../app/hooks/loadScripts.js';
 import { variables } from '../app/core/lib.js';
 import { dashboard } from "../app/auth/dashboard/dashboard.js";
@@ -40,7 +40,7 @@ export const routes = {
    NAVEGACIÓN
 ========================== */
 export function navigate(h) {
-    const Token = localStorage.getItem('Token'); console.log('Token navigate:', Token);
+    const Token = localStorage.getItem('Token'); consoleLocal('log', 'Token navigate: ' + Token);
     h = (!Token && h == '#/dashboard') ? '#/noauth' : h;
     console.log('Path navigate:', h);
     history.pushState({}, "", h);

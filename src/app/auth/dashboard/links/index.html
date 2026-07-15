@@ -4,9 +4,9 @@
         <span class="text">DASHBOARD > LINKS </span>
     </div>
     <div id="content" class="container-fluid">
-        <div class="row">
-            <div class="col-md-10 px-3">
-                <div class="input-group mb-3">
+        <div class="row head-control">
+            <div class="col-md-8 pb-2">
+                <div class="input-group ">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false"><i class="bi bi-list"></i> Categoria</button>
                     <ul class="dropdown-menu" id="listaCate"></ul>
@@ -15,8 +15,12 @@
                     <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i> Buscar</button>
                 </div>
             </div>
-            <div class="col-md-2 text-center">
-                <!-- Button trigger modal -->
+            <div class="col-md-2 pb-2 text-center">
+                <button type="button" class="btn btn-primary btnReset">
+                    Limpiar
+                </button>
+            </div>
+            <div class="col-md-2 pb-2 text-center">
                 <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="bi bi-plus"></i> Nuevo link
                 </button>

@@ -1,6 +1,6 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
 import { variables } from '../../../core/lib';
-import { getFormData, tooltips } from '../../../functions';
+import { consoleLocal, getFormData, tooltips } from '../../../functions';
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 import './style.css';
@@ -9,9 +9,30 @@ export function linksDashboard() {
     const tab = "links";
     const { fecha } = variables();
 
-    const filtrar = () => {
-        const listaCate = document.querySelector('#listaCate');
+    const btnReset = () => {
         const buscar = document.querySelector('#buscar');
+        const btnR = document.querySelector('.btnReset');
+        if (!btnR) { return; }
+        btnR.addEventListener("click", () => {
+            buscar.value = null;
+            buscar.placeholder = 'Buscar...';
+            links();
+        });
+    };
+
+    const btnBuscar = () => {
+        const buscar = document.querySelector('#buscar');
+        const btnB = document.querySelector('#button-addon2');
+        if (!btnB) { return; }
+        btnB.addEventListener("click", () => {
+            links(buscar.value, 'B');
+        });
+    };
+
+    const filtrar = () => {
+        const buscar = document.querySelector('#buscar');
+        const listaCate = document.querySelector('#listaCate');
+        if (!listaCate) { return; }
         listaCate.addEventListener("click", (e) => {
             const opc = e.target.closest("a");
             if (!opc) { return }
@@ -23,9 +44,8 @@ export function linksDashboard() {
     const listaFiltro = (data) => {
         let html = '';
         const listaCate = document.querySelector('#listaCate');
-        //const data = await getData(tab);
         if (!data) { return }
-        const categorias = [...new Set(data.map(item => item.cate))].sort(); console.log(categorias);
+        const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log',categorias);
         for (let i = 0; i < categorias.length; i++) {
             html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
         }
@@ -95,7 +115,7 @@ export function linksDashboard() {
             console.log("Editar:", key);
             localStorage.setItem("Mode", "edit");
             localStorage.setItem("Key", key);
-            const item = await getDataById(tab, key);//console.log(item);
+            const item = await getDataById(tab, key);
             document.querySelector("#Id").value = item.Id;
             document.querySelector("#title").value = item.title;
             document.querySelector("#link").value = item.link;
@@ -120,7 +140,7 @@ export function linksDashboard() {
                 document.querySelector("#create_at").value = fecha;
                 document.querySelector("#uid").value = user.uid;
             }
-            const body = getFormData(form, "id"); //console.log(body);
+            const body = getFormData(form, "id"); consoleLocal('log',body);
             if (mode == "add") {
                 createData(tab, body);
             } else {
@@ -132,12 +152,12 @@ export function linksDashboard() {
         });
     }
 
-    const links = async (b = '') => {
+    const links = async (b = '', c = '') => {
         let html = "";
         const datos = await getData(tab);
         listaFiltro(datos);
-        const filtrado = datos.filter(x => x.cate === b);
-        const data = b ? filtrado : datos; console.log(data);
+        const filtrado = c == 'B' ? datos.filter(x => x.title === b) : datos.filter(x => x.cate === b);
+        const data = b ? filtrado : datos; consoleLocal('log',data);
         const productList = document.querySelector("#links-list");
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
@@ -146,10 +166,11 @@ export function linksDashboard() {
             productList.innerHTML = '<tr><td colspan="5"><p>No hay links disponibles.</p></td></tr>';
             return;
         }
+        const user = JSON.parse(localStorage.getItem('userBasic'));
         //Cards
         for (const item of data) {
             var { Id, key, title, link, desc, cate, uid, create_at, activo } = item;
-            //if (activo) {
+            if (uid == user.uid) {
             html += `
             <!--Card-->
             <div key="${key}" class="link-card">
@@ -194,7 +215,7 @@ export function linksDashboard() {
             </div>
             <!--/Card-->
             `;
-            //}
+            }
         }
         productList.innerHTML = html;
         document.querySelector("#Id").value = Number(Id) + 1;
@@ -207,7 +228,9 @@ export function linksDashboard() {
         btnEditar();
         btnBorrar();
         btnCancelar();
-        setTimeout(() => { links(); filtrar();}, 1000);
+        btnBuscar();
+        btnReset();
+        setTimeout(() => { links(); filtrar(); }, 1000);
     }
 
     setTimeout(onLoad, 0);
