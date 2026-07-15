@@ -10,7 +10,7 @@ export const entorno = environments.entorno;//(host == 'localhost:5173') ? 'Desa
 export const prefix = environments.prefix;
 export const KEY = environments.key;
 export const theme = 'links';
-export const proyect = 'linksapp';
+export const proyect = 'LinksApp';
 export const typeDev = 'vite'; //vite or webpack
 export const hostDev = (typeDev == 'vite') ? 'localhost:5173' : 'localhost:9001';
 export const hostPre = 'localhost';//(typeDev == 'vite') ? '127.0.0.1:4173' : 'localhost';

@@ -8,7 +8,7 @@ export function menu() {
         const { page_url } = variables();
         const nameElement = document.querySelector('.name-page');
         if (nameElement) {
-            nameElement.textContent = name;
+            //nameElement.textContent = name;
             nameElement.setAttribute('href', page_url);
         }
     }

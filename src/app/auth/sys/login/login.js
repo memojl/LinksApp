@@ -3,8 +3,9 @@ import { auth } from "../../../services/firebase.js";
 import { consoleLocal, toggleEye } from "../../../functions.js";
 import { showMessage } from "../../../hooks/messages.js";
 import { googleLogin } from "../../../hooks/googleLogin.js";
-import Html from './index.html?raw';
 import { navigate } from "../../../../routes/routes.js";
+import Html from './index.html?raw';
+import './style.css';
 
 export function login() {
 

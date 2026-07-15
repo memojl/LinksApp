@@ -27,7 +27,7 @@ export function variables() {
   //
   const { mod, ext, id } = urlVariables(hash);
   const path_hash = '#/';
-  const path_root = host == 'localhost' ? `MisSitios/${proyect}` : host == 'multiportal.github.io' ? proyect : '';
+  const path_root = host == 'localhost' ? `MisSitios/${proyect}` : host == 'memojl.github.io' ? proyect : '';
   const page_url = dominio + path_root;//
 
   return {
