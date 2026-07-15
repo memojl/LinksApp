@@ -27,7 +27,7 @@ export function variables() {
   //
   const { mod, ext, id } = urlVariables(hash);
   const path_hash = '#/';
-  const path_base = host == 'localhost' ? 'MisSitios/' : '';
+  const path_base = host == 'localhost' ? 'MisSitios/': '';
   const path_root = path_base + path_url;
   const page_url = dominio + path_root;//
 
@@ -58,7 +58,6 @@ export function variables() {
     ext,
     id,
     path_hash,
-    path_base,
     path_root,
     page_url,
     proyect
