@@ -57,7 +57,6 @@ export function variables() {
     mod,
     ext,
     id,
-    path_hash,
     path_root,
     page_url,
     proyecto,
