@@ -27,7 +27,7 @@ export function variables() {
   //
   const { mod, ext, id } = urlVariables(hash);
   const path_base = host == 'localhost' ? 'MisSitios/' : '';
-  const proyecto = host.includes("github.io") ? proyect : '';
+  const proyecto = host.includes("github.io") ? proyect + '/' : '';
   const path_root = path_base + proyecto;
   const page_url = dominio + path_root;//
 
@@ -57,7 +57,6 @@ export function variables() {
     mod,
     ext,
     id,
-    path_hash,
     path_root,
     page_url,
     proyecto,
