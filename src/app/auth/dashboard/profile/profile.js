@@ -1,6 +1,6 @@
 import { getData, createData, putData } from '../../../services/firebase';
 import { compressImage, imageToBase64, convertirBase64 } from '../../../hooks/loadImage';
-import { render, getFormData } from '../../../functions.js';
+import { render, getFormData, handleEventListener } from '../../../functions.js';
 import { variables } from '../../../core/lib.js';
 import Html from './index.html?raw';
 import './style.css';
@@ -17,9 +17,10 @@ export async function profileDashboard() {
     };
 
     const btnCancelar = () => {
-        document.addEventListener("click", (e) => {
+        handleEventListener("click", (e) => {
             const btn = e.target.closest("#btnCancel");
             if (!btn) return;
+            console.warn('Cancelado!!!', tab);
             setTimeout(() => { getUser(); }, 100);
         });
     };

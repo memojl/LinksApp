@@ -9,6 +9,7 @@ import { versionJson } from "./services/fetch.js";
    VARIABLES
 ========================== */
 const { host } = variables();
+const controllers = [];
 
 /* ==========================
    PARAMETROS URL
@@ -34,6 +35,7 @@ export function filename() {
 ========================== */
 export const router = async (v) => {
   if (!app) return;
+  destroyEvents();
   const page = v.ext ? `${v.mod}/${v.ext}` : v.mod;
   const view = routes[page] ? page : "404";
   consoleLocal('log', { page, view });
@@ -60,6 +62,27 @@ export function render(template, data) {
       .split('.')
       .reduce((obj, prop) => obj?.[prop], data) ?? '';
   });
+}
+
+export const handleEventListener = (evento, fn, selector) => {
+  const controller = new AbortController();
+  controllers.push(controller);
+  (selector ?? document).addEventListener(
+    evento,
+    fn,
+    { signal: controller.signal }
+  );
+  return controller;
+};
+
+export const destroyEvents = () => {
+  controllers.forEach(c => c.abort());
+  controllers.length = 0;
+};
+
+export function destroy(controller) {
+  controller?.abort();
+  controller = null;
 }
 
 /* ==========================
@@ -139,7 +162,7 @@ export function consoleLocal(type, val) {
 export function footer() {
   const f = document.querySelector("#footer_page");
   if (!f) return;
-  f.innerHTML = year + ' &copy; ' + name + ' V.' + version + ' - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
+  f.innerHTML = year + ' &copy; MandragoraJS V.3.0.1 - Diseñada por <a target="_blank" href="http://multiportal.com.mx">[:MULTIPORTAL:]</a>.';
 }
 
 export async function comprobarVersion(v) {
@@ -174,7 +197,7 @@ export const getFormData = (form, key = "name") =>
   );
 
 export const tooltips = () => {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); console.log(tooltipTriggerList);
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]'); consoleLocal('log', tooltipTriggerList);
   tooltipTriggerList.forEach(el => {
     new bootstrap.Tooltip(el);
   });

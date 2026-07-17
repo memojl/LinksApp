@@ -51,7 +51,7 @@
         display: flex;
         flex-direction: row;
         padding: 10px 20px 10px 15px;
-        min-width: 250px;
+        min-width: 200px;
     }
 
     .item i {
@@ -75,9 +75,9 @@
         margin: 0 0 0 8px;
     }
 
-    /*@media (max-width: 576px) {
+    @media (max-width: 576px) {
         .card {
             width: 270px;
         }
-    }*/
+    }
 }

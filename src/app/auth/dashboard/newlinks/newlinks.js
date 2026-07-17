@@ -1,11 +1,11 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
 import { variables } from '../../../core/lib';
-import { consoleLocal, getFormData, tooltips } from '../../../functions';
+import { consoleLocal, getFormData, handleEventListener, tooltips } from '../../../functions';
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 import './style.css';
 
-export function linksDashboard() {
+export function newlinksDashboard() {
     const tab = "links";
     const { fecha } = variables();
 
@@ -13,39 +13,39 @@ export function linksDashboard() {
         const buscar = document.querySelector('#buscar');
         const btnR = document.querySelector('.btnReset');
         if (!btnR) { return; }
-        btnR.addEventListener("click", () => {
+        handleEventListener("click", () => {
             buscar.value = null;
             buscar.placeholder = 'Buscar...';
             links();
-        });
+        }, btnR);
     };
 
     const btnBuscar = () => {
         const buscar = document.querySelector('#buscar');
         const btnB = document.querySelector('#button-addon2');
         if (!btnB) { return; }
-        btnB.addEventListener("click", () => {
+        handleEventListener("click", () => {
             links(buscar.value, 'B');
-        });
+        }, btnB);
     };
 
     const filtrar = () => {
         const buscar = document.querySelector('#buscar');
         const listaCate = document.querySelector('#listaCate');
         if (!listaCate) { return; }
-        listaCate.addEventListener("click", (e) => {
+        handleEventListener("click", (e) => {
             const opc = e.target.closest("a");
             if (!opc) { return; }
             buscar.value = null;
             buscar.placeholder = opc.textContent;
             links(opc.textContent);
-        });
+        }, listaCate);
     };
 
     const listaFiltro = (data) => {
         let html = '';
         const listaCate = document.querySelector('#listaCate');
-        if (!data) { return }
+        if (!data || !listaCate) { return }
         const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log', categorias);
         for (let i = 0; i < categorias.length; i++) {
             html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
@@ -60,15 +60,16 @@ export function linksDashboard() {
     };
 
     const btnCancelar = () => {
-        document.addEventListener("click", (e) => {
+        handleEventListener("click", (e) => {
             const btn = e.target.closest("#btnCancel");
             if (!btn) return;
+            console.warn('Cancelado!!!', tab);
             setTimeout(() => { links(); }, 100);
         });
     };
 
     const btnBorrar = () => {
-        document.addEventListener("click", (e) => {
+        handleEventListener("click", (e) => {
             const btn = e.target.closest(".btnDelete");
             if (!btn) return;
             Swal.fire({
@@ -83,6 +84,7 @@ export function linksDashboard() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     const fila = btn.closest(".link-card");
+                    if (!fila) return;
                     const key = fila.getAttribute("key");
                     console.log("Eliminar:", key);
                     deleteData(tab, key);
@@ -98,7 +100,7 @@ export function linksDashboard() {
     };
 
     const btnAgregar = () => {
-        document.addEventListener("click", async (e) => {
+        handleEventListener("click", (e) => {
             const btn = e.target.closest(".btnAdd");
             if (!btn) return;
             const form = document.querySelector("#save-form");
@@ -108,10 +110,11 @@ export function linksDashboard() {
     };
 
     const btnEditar = () => {
-        document.addEventListener("click", async (e) => {
+        handleEventListener("click", async (e) => {
             const btn = e.target.closest(".btnEdit");
             if (!btn) return;
             const fila = btn.closest(".link-card");
+            if (!fila) return;
             const key = fila.getAttribute("key");
             console.log("Editar:", key);
             localStorage.setItem("Mode", "edit");
@@ -131,7 +134,7 @@ export function linksDashboard() {
     const btnGuardar = () => {
         const form = document.querySelector("#save-form");
         if (!form) return;
-        form.addEventListener("submit", async (e) => {
+        handleEventListener("submit", async (e) => {
             e.preventDefault();
             const mode = localStorage.getItem("Mode");
             const user = JSON.parse(localStorage.getItem('userBasic'));
@@ -141,7 +144,7 @@ export function linksDashboard() {
                 document.querySelector("#create_at").value = fecha;
                 document.querySelector("#uid").value = user.uid;
             }
-            const body = getFormData(form, "id"); consoleLocal('log', body);
+            const body = getFormData(form, "id"); //console.log(body);
             if (mode == "add") {
                 createData(tab, body);
             } else {
@@ -150,7 +153,7 @@ export function linksDashboard() {
                 putData(tab, key, body);
             }
             setTimeout(() => { links(); }, 1000);
-        });
+        }, form);
     }
 
     const links = async (b = '', c = '') => {
@@ -159,12 +162,13 @@ export function linksDashboard() {
         listaFiltro(datos);
         const filtrado = c == 'B' ? datos.filter(x => x.title === b) : datos.filter(x => x.cate === b);
         const data = b ? filtrado : datos; consoleLocal('log', data);
-        const productList = document.querySelector("#links-list");
+        const newlinksList = document.querySelector("#links-list");
+        if (!newlinksList) return;
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
         if (data.length == 0 || !data) {
             document.querySelector("#Id").value = 1;
-            productList.innerHTML = '<tr><td colspan="5"><p>No hay links disponibles.</p></td></tr>';
+            newlinksList.innerHTML = '<tr><td colspan="5"><p>No hay links disponibles.</p></td></tr>';
             return;
         }
         const user = JSON.parse(localStorage.getItem('userBasic'));
@@ -218,7 +222,7 @@ export function linksDashboard() {
             `;
             }
         }
-        productList.innerHTML = html;
+        newlinksList.innerHTML = html;
         document.querySelector("#Id").value = Number(Id) + 1;
         //tooltips();
     };

@@ -4,7 +4,7 @@ import { variables } from '../app/core/lib.js';
 import { dashboard } from "../app/auth/dashboard/dashboard.js";
 import { profileDashboard } from "../app/auth/dashboard/profile/profile.js";
 import { settingsDashboard } from "../app/auth/dashboard/settings/settings.js";
-import { linksDashboard } from "../app/auth/dashboard/links/links.js";
+import { newlinksDashboard } from "../app/auth/dashboard/newlinks/newlinks.js";
 import { register } from '../app/auth/sys/register/register.js';
 import { login } from '../app/auth/sys/login/login.js';
 import { logout } from '../app/auth/sys/logout/logout.js';
@@ -32,7 +32,7 @@ export const routes = {
     'dashboard': compose(sidebar, dashboard),
     'dashboard/settings': compose(sidebar, settingsDashboard),
     'dashboard/profile': compose(sidebar, profileDashboard),
-    'dashboard/links': compose(sidebar, linksDashboard),
+    'dashboard/links': compose(sidebar, newlinksDashboard),
     '404': compose(menu, notFound)
 };
 
