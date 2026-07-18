@@ -2,7 +2,7 @@
 let loc = location;
 const { pathname } = loc;
 const path = pathname.replace("sw.js", "");
-const CACHE_NAME = "LinksApp-Ver.0.0.1";
+const CACHE_NAME = "LinksApp-Ver.1.0.1";
 
 self.addEventListener("install", function (event) {
   console.log("[Service Worker] Instalando Service Worker (sw.js)...", event);
