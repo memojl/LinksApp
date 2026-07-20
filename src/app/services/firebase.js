@@ -3,22 +3,12 @@ import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "firebase/database";
 import { showMessage } from "../hooks/messages";
-//import { variables } from "../core/lib";
+import { environments } from "../../environments/environments";
 import { prefix } from "../core/constants";
-//import { navigate } from "../../routes/routes";
 // TODO: Add SDKs for Firebase products that you want to use
 console.log('Firebase SDK');
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyD9ekFO-NPMduEYXcuYW_rr_etWZJZmqdU",
-  authDomain: "linksapp-34127.firebaseapp.com",
-  databaseURL: "https://linksapp-34127-default-rtdb.firebaseio.com",
-  projectId: "linksapp-34127",
-  storageBucket: "linksapp-34127.firebasestorage.app",
-  messagingSenderId: "888534560385",
-  appId: "1:888534560385:web:ea028b50995f91add42780",
-  measurementId: "G-Y7P0SYY6V7"
-};
+const firebaseConfig = environments.firebase;
 
 // Initialize Firebase
 export const App = initializeApp(firebaseConfig);

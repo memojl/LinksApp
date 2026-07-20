@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #1a1a1a;
+  background: #fff;
   font-family: 'Oswald', sans-serif !important;
   overflow: hidden;
 }
@@ -73,7 +73,7 @@ body {
   overflow-y: auto; height: 500px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 200px) {
   #app {
     width: 600px;
     height: 500px;

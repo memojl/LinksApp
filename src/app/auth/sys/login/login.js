@@ -6,7 +6,7 @@ import { googleLogin } from "../../../hooks/googleLogin.js";
 import { navigate } from "../../../../routes/routes.js";
 import { variables } from "../../../core/lib.js";
 import Html from './index.html?raw';
-import './style.css';
+//import './style.css';
 
 
 export function login() {
