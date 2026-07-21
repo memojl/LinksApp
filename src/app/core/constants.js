@@ -10,6 +10,7 @@ export const version = environments.version;
 export const entorno = environments.entorno;//(host == 'localhost:5173') ? 'Desarrollo' : environments.entorno;
 export const prefix = environments.prefix;
 export const KEY = environments.key;
+export const FirebaseCfg = environments.firebase;
 export const theme = 'links';
 export const proyect = 'LinksApp';
 export const typeDev = 'vite'; //vite or webpack
