@@ -1,10 +1,6 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
 import { variables } from '../../../core/lib';
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-import { consoleLocal, getFormData, tooltips } from '../../../functions';
-=======
 import { consoleLocal, getFormData, handleEventListener, tooltips } from '../../../functions';
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 import './style.css';
@@ -17,45 +13,27 @@ export function newlinksDashboard() {
         const buscar = document.querySelector('#buscar');
         const btnR = document.querySelector('.btnReset');
         if (!btnR) { return; }
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-        btnR.addEventListener("click", () => {
-            buscar.value = null;
-            buscar.placeholder = 'Buscar...';
-            links();
-        });
-=======
         handleEventListener("click", () => {
             buscar.value = null;
             buscar.placeholder = 'Buscar...';
             links();
         }, btnR);
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
     };
 
     const btnBuscar = () => {
         const buscar = document.querySelector('#buscar');
         const btnB = document.querySelector('#button-addon2');
         if (!btnB) { return; }
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-        btnB.addEventListener("click", () => {
-            links(buscar.value, 'B');
-        });
-=======
         handleEventListener("click", () => {
             links(buscar.value, 'B');
         }, btnB);
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
     };
 
     const filtrar = () => {
         const buscar = document.querySelector('#buscar');
         const listaCate = document.querySelector('#listaCate');
         if (!listaCate) { return; }
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-        listaCate.addEventListener("click", (e) => {
-=======
         handleEventListener("click", (e) => {
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
             const opc = e.target.closest("a");
             if (!opc) { return; }
             buscar.value = null;
@@ -67,13 +45,8 @@ export function newlinksDashboard() {
     const listaFiltro = (data) => {
         let html = '';
         const listaCate = document.querySelector('#listaCate');
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-        if (!data) { return }
-        const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log',categorias);
-=======
         if (!data || !listaCate) { return }
         const categorias = [...new Set(data.map(item => item.cate))].sort(); consoleLocal('log', categorias);
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
         for (let i = 0; i < categorias.length; i++) {
             html += `<li><a class="dropdown-item">${categorias[i]}</a></li>`
         }
@@ -171,7 +144,7 @@ export function newlinksDashboard() {
                 document.querySelector("#create_at").value = fecha;
                 document.querySelector("#uid").value = user.uid;
             }
-            const body = getFormData(form, "id"); consoleLocal('log',body);
+            const body = getFormData(form, "id"); //console.log(body);
             if (mode == "add") {
                 createData(tab, body);
             } else {
@@ -188,14 +161,9 @@ export function newlinksDashboard() {
         const datos = await getData(tab);
         listaFiltro(datos);
         const filtrado = c == 'B' ? datos.filter(x => x.title === b) : datos.filter(x => x.cate === b);
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-        const data = b ? filtrado : datos; consoleLocal('log',data);
-        const productList = document.querySelector("#links-list");
-=======
         const data = b ? filtrado : datos; consoleLocal('log', data);
         const newlinksList = document.querySelector("#links-list");
         if (!newlinksList) return;
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
         if (data.length == 0 || !data) {
@@ -208,11 +176,7 @@ export function newlinksDashboard() {
         for (const item of data) {
             var { Id, key, title, link, desc, cate, uid, create_at, activo } = item;
             if (uid == user.uid) {
-<<<<<<< HEAD:src/app/auth/dashboard/links/links.js
-            html += `
-=======
                 html += `
->>>>>>> Ext:src/app/auth/dashboard/newlinks/newlinks.js
             <!--Card-->
             <div key="${key}" class="link-card">
                 <span class="status ${activo ? 'online' : 'offline'}"></span>

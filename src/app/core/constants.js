@@ -1,4 +1,5 @@
-import { environments } from "../../environments/environments";
+import { envConfig } from "../hooks/envConfig";
+const { environments } = await envConfig();
 /* ==========================
    CONSTANTES 
 ========================== */
