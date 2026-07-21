@@ -1,1 +1,0 @@
-var e={name:`LinksApp`,version:`1.0.1`,prefix:`links_`,entorno:`produccion`,api:``,key:``,firebase:null};export{e as t};
