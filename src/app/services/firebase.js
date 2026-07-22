@@ -5,15 +5,20 @@ import { getDatabase, ref, set, push, child, remove, onValue, get, update } from
 import { showMessage } from "../hooks/messages";
 import { prefix, FirebaseCfg } from "../core/constants";
 // TODO: Add SDKs for Firebase products that you want to use
-console.log('Firebase SDK');
+export let fbCfg = FirebaseCfg != null && Object.keys(FirebaseCfg).length !== 0;
+console.log('Firebase SDK: ', fbCfg);
+if (!fbCfg) {
+  console.error("ERROR: NO EXISTE CONFIGURACIÓN FIREBASE!",'FirebaseCfg:', FirebaseCfg);
+}
+
 // Your web app's Firebase configuration
 const firebaseConfig = FirebaseCfg;
 
 // Initialize Firebase
-export const App = initializeApp(firebaseConfig);
-export const auth = getAuth(App);
-export const db = getDatabase(App);//Realtime Database
-export const fs = getFirestore(App);//FireStore
+export const App = (!fbCfg) ? null : initializeApp(firebaseConfig);
+export const auth = (!fbCfg) ? null : getAuth(App);
+export const db = (!fbCfg) ? null : getDatabase(App);//Realtime Database
+export const fs = (!fbCfg) ? null : getFirestore(App);//FireStore
 
 /* ==========================
    FUNCIONES CRUD
@@ -48,7 +53,7 @@ export async function putData(tab, id, body) {
 /** CREAR/EDITAR REGISTRO **/
 export function postData(tab, id, body) {
   set(ref(db, `${prefix}${tab}/${id}`), body);
-  if (id) { showMessage("Se actualizo correctamente", "Exito"); } 
+  if (id) { showMessage("Se actualizo correctamente", "Exito"); }
   else { showMessage("Se agrego correctamente", "Exito"); }
 }
 
@@ -132,6 +137,7 @@ export function getUserSesion(user) {
 }
 
 export function sesionActiva({ mod, ext }) {
+  if (!fbCfg) { return; }
   onAuthStateChanged(auth, async (user) => {
     console.warn(mod, 'sesion activa:', user);
     if (user) {

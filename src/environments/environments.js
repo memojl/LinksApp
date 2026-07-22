@@ -9,9 +9,7 @@ export const environments = {
 	entorno: "produccion",
 	prefix : "links_",
     key: '',
-    firebase: {
-        
-    },
+    firebase: null,
     emailjs: {
         PUBLIC_KEY: "",
         SERVICE_ID: "",

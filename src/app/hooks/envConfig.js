@@ -22,7 +22,7 @@ export async function envConfig() {
             envMode = MODE.DEVELOP;
             break;
 
-        case "multiportal.github.io":
+        case "memojl.github.io":
             envMode = MODE.QA;
             break;
     }
