@@ -3,12 +3,11 @@ import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set, push, child, remove, onValue, get, update } from "firebase/database";
 import { showMessage } from "../hooks/messages";
-import { environments } from "../../environments/environments";
-import { prefix } from "../core/constants";
+import { prefix, FirebaseCfg } from "../core/constants";
 // TODO: Add SDKs for Firebase products that you want to use
 console.log('Firebase SDK');
 // Your web app's Firebase configuration
-const firebaseConfig = environments.firebase;
+const firebaseConfig = FirebaseCfg;
 
 // Initialize Firebase
 export const App = initializeApp(firebaseConfig);
