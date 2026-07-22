@@ -9,16 +9,7 @@ export const environments = {
 	entorno: "produccion",
 	prefix : "links_",
     key: '',
-    firebase: {
-        apiKey: "AIzaSyD9ekFO-NPMduEYXcuYW_rr_etWZJZmqdU",
-        authDomain: "linksapp-34127.firebaseapp.com",
-        databaseURL: "https://linksapp-34127-default-rtdb.firebaseio.com",
-        projectId: "linksapp-34127",
-        storageBucket: "linksapp-34127.firebasestorage.app",
-        messagingSenderId: "888534560385",
-        appId: "1:888534560385:web:ea028b50995f91add42780",
-        measurementId: "G-Y7P0SYY6V7"
-    },
+    firebase: null,
     emailjs: {
         PUBLIC_KEY: "",
         SERVICE_ID: "",
