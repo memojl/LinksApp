@@ -1,6 +1,6 @@
 export const environments = {
     name: "LinksApp",
-	version: "1.0.1",
+	version: "1.0.16",
 	description: "LinksApp- Single Page Application",
 	start_url: "https://memojl.github.io/LinksApp/",
 	lang: "es-MX",

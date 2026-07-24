@@ -84,7 +84,7 @@ export async function profileDashboard() {
         const perfilData = userData ? userData : userBasic; console.table(perfilData);
         const { key, ID, foto, email, usuario, uid, userId, tel, direccion, create_at, update_at, publico } = perfilData;
         if (key) { localStorage.setItem("Key", key); }
-        tipoPerfil(publico);
+        //tipoPerfil(publico);
         if (foto) {
             //Profile
             photo.src = foto;
@@ -102,13 +102,28 @@ export async function profileDashboard() {
         document.querySelector('#email').value = email;
         document.querySelector('#tel').value = tel ?? null;
         document.querySelector('#direccion').value = direccion ?? null;
+        //Check
+        const mode = localStorage.getItem("Mode");
+        if (mode && mode == 'edit') {
+            const chk = document.getElementById("publico");
+            chk.checked = publico;
+        }
         //Html
         html = `
             <div class="info-text">
                 <span>UserId:</span> ${uid}
             </div>
             <div class="text-nombre">
-                ${usuario} ${userId ? `/@` + userId : ''}
+                ${usuario}
+            </div>
+            ${userId ? `
+                <div class="info-arroba">
+                    @${userId}
+                </div>` : ''}
+             <div class="info-bag ${publico ? 'publico' : 'privado'}">
+                <span>
+                    <i class="bi bi-globe"></i> ${publico ? 'Publico' : 'Privado'}
+                </span> 
             </div>
             <div class="info-text">
                 ${email}

@@ -127,6 +127,9 @@ export function newlinksDashboard() {
             document.querySelector("#cate").value = item.cate;
             document.querySelector("#uid").value = item.uid;
             document.querySelector("#create_at").value = item.create_at;
+            //Check
+            const chk = document.getElementById("activo");
+            chk.checked = item.activo;
             toggleTitle();
         });
     };
@@ -160,22 +163,24 @@ export function newlinksDashboard() {
         let html = "";
         const datos = await getData(tab);
         listaFiltro(datos);
-        const filtrado = c == 'B' ? datos.filter(x => x.title === b) : datos.filter(x => x.cate === b);
+        const filtrado = c == 'B' ? datos?.filter(x => x.title === b) : datos?.filter(x => x.cate === b);
         const data = b ? filtrado : datos; consoleLocal('log', data);
         const newlinksList = document.querySelector("#links-list");
         if (!newlinksList) return;
         localStorage.removeItem("Key");
         localStorage.setItem("Mode", "add");
-        if (data.length == 0 || !data) {
+        if (!data || data?.length == 0) {
             document.querySelector("#Id").value = 1;
-            newlinksList.innerHTML = '<tr><td colspan="5"><p>No hay links disponibles.</p></td></tr>';
+            newlinksList.innerHTML = '<p class="text-center">No hay links disponibles.</p>';
             return;
         }
         const user = JSON.parse(localStorage.getItem('userBasic'));
         //Cards
+        let tot = 0;
         for (const item of data) {
             var { Id, key, title, link, desc, cate, uid, create_at, activo } = item;
             if (uid == user.uid) {
+                tot++;
                 html += `
             <!--Card-->
             <div key="${key}" class="link-card">
@@ -222,7 +227,8 @@ export function newlinksDashboard() {
             `;
             }
         }
-        newlinksList.innerHTML = html;
+        console.log('Registros:', tot);
+        newlinksList.innerHTML = tot == 0 ? `<p class="text-center">${tot} links disponibles.</p>` : '<div class="links-grid">' + html + '<div>';
         document.querySelector("#Id").value = Number(Id) + 1;
         //tooltips();
     };

@@ -1,8 +1,8 @@
 /* 
-CMS-Javascript (hash/spa)
+CMS-Javascript (hash/spa) 
 Autor: Guillermo Jiménez López
 Fecha de Actualización: 21.07.2026
-Versión: 1.0.1 - MandragoraJS - Vite
+Versión: 1.0.16 - MandragoraJS - Vite
 Notas: 
 */
 //BOOTSTRAP
