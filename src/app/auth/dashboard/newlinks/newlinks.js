@@ -1,6 +1,7 @@
 import { getData, createData, putData, deleteData, getDataById } from '../../../services/firebase';
 import { variables } from '../../../core/lib';
-import { consoleLocal, getFormData, handleEventListener, tooltips } from '../../../functions';
+import { consoleLocal, getFormData, tooltips } from '../../../functions';
+import { handleEventListener } from '../../../hooks/handleEventListener';
 import Swal from 'sweetalert2';
 import Html from './index.html?raw';
 import './style.css';

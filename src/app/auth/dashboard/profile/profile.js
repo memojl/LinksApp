@@ -1,6 +1,7 @@
 import { getData, createData, putData } from '../../../services/firebase';
-import { compressImage, imageToBase64, convertirBase64 } from '../../../hooks/loadImage';
-import { render, getFormData, handleEventListener } from '../../../functions.js';
+import { compressImage, convertirBase64 } from '../../../hooks/loadImage';
+import { render, getFormData } from '../../../functions.js';
+import { handleEventListener } from '../../../hooks/handleEventListener';
 import { variables } from '../../../core/lib.js';
 import Html from './index.html?raw';
 import './style.css';
