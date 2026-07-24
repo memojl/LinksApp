@@ -78,7 +78,7 @@ HERO
     padding-top: 25px;
     align-items: center;
     position: relative;
-    background-image: url("./assets/img/bg/background.png");
+    background-image: url("/assets/img/bg/background.png");
     background-size: cover;
     background-position: center;
 }
