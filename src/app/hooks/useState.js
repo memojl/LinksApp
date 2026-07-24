@@ -25,7 +25,7 @@ export function useState(initial) {
         state = value;
 
         if(rendering){
-            navigate('/dashboard/profile');
+            navigate('#/dashboard/profile');
         }
         rendering = false;
     }

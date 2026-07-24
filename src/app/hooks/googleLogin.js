@@ -22,7 +22,7 @@ export const googleLogin = () => {
         consoleLocal('log', accessToken);
         const form = document.querySelector("#login-form");
         if (form) form.reset();
-        navigate('/dashboard');
+        navigate('#/dashboard');
       } catch (error) {
         console.log(error);
       }
