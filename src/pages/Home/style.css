@@ -4,16 +4,6 @@
     HERO
     ======================*/
 
-    /*.hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-        background-image: url("../../../assets/img/bg/background.png");
-        background-size: cover;
-        background-position: center;
-    }*/
-
     .overlay {
         position: absolute;
         inset: 0;
