@@ -1,4 +1,7 @@
 import { body, theme } from "../core/constants";
+/* ==========================
+  TEMA
+========================== */
 
 export const temaHome = () => {
     const m = document.querySelector('.masthead');

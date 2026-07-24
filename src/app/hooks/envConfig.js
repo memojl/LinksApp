@@ -1,3 +1,6 @@
+/* ==========================
+   ENV CONGIGURACIÓN
+========================== */
 const MODE = {
     LOCAL: "local",
     DEVELOP: "develop",
@@ -22,7 +25,7 @@ export async function envConfig() {
             envMode = MODE.DEVELOP;
             break;
 
-        case "memojl.github.io":
+        case "multiportal.github.io":
             envMode = MODE.QA;
             break;
     }
