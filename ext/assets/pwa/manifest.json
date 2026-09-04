@@ -17,7 +17,7 @@
 	"api": "https://api.midominio.com",
 	"empresa": "Multiportal",
 	"entorno": "produccion",
-	"prefix" : "venta_",
+	"prefix" : "links_",
 	"debug": false,
 	"icons": [
 		{
