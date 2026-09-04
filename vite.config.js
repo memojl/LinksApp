@@ -5,7 +5,7 @@ export default defineConfig({
   base: './',//Configuar para "spa -> /" para hash "-> ./"
   root: './',
   build: {
-    outDir: 'ext',
+    outDir: 'docs',
   },
   publicDir: 'public',
 })
