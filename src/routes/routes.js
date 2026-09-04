@@ -33,7 +33,7 @@ export const routes = {
   'dashboard': compose(sidebar, dashboard),
   'dashboard/settings': compose(sidebar, settingsDashboard),
   'dashboard/profile': compose(sidebar, profileDashboard),
-  'dashboard/links': compose(sidebar, newlinksDashboard),
+  'dashboard/newlinks': compose(sidebar, newlinksDashboard),
   '404': compose(menu, notFound),
 };
 

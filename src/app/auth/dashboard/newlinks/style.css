@@ -7,6 +7,11 @@
         align-content: flex-start;
     }*/
 
+    .showLimit {
+        display: none;
+
+    }
+
     .item-icon {
         width: 100px;
         display: flex;

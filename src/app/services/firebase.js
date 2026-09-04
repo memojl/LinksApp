@@ -94,6 +94,31 @@ export function onDataById(tab, id, callback) {
   });
 }
 
+export async function onDataByIdA(tab, id) {
+  return new Promise((resolve, reject) => {
+    const dbRef = ref(db, `${prefix}${tab}/${id}`);
+    const unsubscribe = onValue(
+      dbRef,
+      (snapshot) => {
+        unsubscribe(); // deja de escuchar
+
+        if (!snapshot.exists()) {
+          resolve(null);
+          return;
+        }
+
+        resolve({
+          key: snapshot.key,
+          ...snapshot.val()
+        });
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
 /** CONSULTAR POR CAMPO **/
 export async function queryData(tab, field, value) {
   const q = query(
@@ -214,10 +239,12 @@ export function sesionActiva({ mod, ext }) {
           } catch (error) {
             console.log(error);
           }
-          const w = localStorage.getItem('welcome');
-          if (w === 'false') {
-            showMessage('Bienvenido', 'Información');
-            localStorage.setItem('welcome', true);
+          if (mod == 'dashboard' && ext == '') {
+            const w = localStorage.getItem('welcome');
+            if (w === 'false') {
+              showMessage('Bienvenido', 'Información');
+              localStorage.setItem('welcome', true);
+            }
           }
         }
       } else {

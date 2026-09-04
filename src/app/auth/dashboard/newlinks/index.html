@@ -5,24 +5,33 @@
     </div>
     <div id="content" class="container-fluid">
         <div class="row head-control">
-            <div class="col-md-8 pb-2">
-                <div class="input-group ">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false"><i class="bi bi-list"></i> Categoria</button>
-                    <ul class="dropdown-menu" id="listaCate"></ul>
-                    <input type="text" class="form-control" id="buscar" placeholder="Buscar..." aria-label="buscar"
-                        aria-describedby="button-addon2">
-                    <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i> Buscar</button>
+            <div class="col-md-10 pb-2 px-1">
+                <div class="showLimit">
+                    <div class="input-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-list"></i><span>Categoria</span> </button>
+                        <ul class="dropdown-menu" id="listaCate"></ul>
+                        <input type="text" class="form-control" id="buscar" placeholder="Buscar..." aria-label="buscar"
+                            aria-describedby="button-addon2">
+                        <!--span class="input-group-text btnReset">
+                                            <i class="bi bi-eraser"></i>
+                                        </span-->
+                        <button type="button" class="btn btn-primary btnReset">
+                            <i class="bi bi-eraser"></i>
+                        </button>
+                        <button class="btn btn-primary" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i> <span>Buscar</span>
+                        </button>
+                    </div>
+                    <!--button type="button" class="btn btn-primary btnReset mx-2">
+                                        <i class="bi bi-eraser"></i> <span>Limpiar</span>
+                                    </button-->
                 </div>
             </div>
             <div class="col-md-2 pb-2 text-center">
-                <button type="button" class="btn btn-primary btnReset">
-                    <i class="bi bi-eraser"></i> Reset
-                </button>
-            </div>
-            <div class="col-md-2 pb-2 text-center">
-                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i class="bi bi-plus-lg"></i> Nuevo link
+                <button type="button" class="btn btn-primary btnAdd" data-bs-toggle="modal" data-bs-target="#Modal">
+                    <i class="bi bi-plus-square"></i> Nuevo link
                 </button>
             </div>
         </div>
@@ -34,12 +43,12 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form id="save-form">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Nuevo</h5>
+                            <h5 class="modal-title title" id="ModalLabel">Nuevo</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -71,7 +80,7 @@
                             </div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                 id="btnCancel">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
                 </div>
