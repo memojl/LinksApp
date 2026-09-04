@@ -8,6 +8,7 @@ import { newlinksDashboard } from "../app/auth/dashboard/newlinks/newlinks.js";
 import { register } from "../app/auth/sys/register/register.js";
 import { login } from "../app/auth/sys/login/login.js";
 import { logout } from "../app/auth/sys/logout/logout.js";
+import { forget } from "../app/auth/sys/forget/forget.js";
 import { noauth } from "../app/auth/sys/noauth/noauth.js";
 import { home } from "../pages/Home/home.js";
 import { notFound } from "../pages/404/404.js";
@@ -29,6 +30,7 @@ export const routes = {
   'registro': register,
   'login': login,
   'logout': logout,
+  'forget': forget,
   'noauth': compose(menu, noauth),
   'dashboard': compose(sidebar, dashboard),
   'dashboard/settings': compose(sidebar, settingsDashboard),
