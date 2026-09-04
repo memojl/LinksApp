@@ -7,6 +7,11 @@
         align-content: flex-start;
     }*/
 
+    .showLimit {
+        display: none;
+
+    }
+
     .item-icon {
         width: 100px;
         display: flex;
@@ -62,11 +67,14 @@
         cursor: pointer;
     }
 
-    .head-control{
+    .head-control {
         background-color: #e6f0f1;
         border: 1px solid #ddd;
         border-radius: 8px;
         padding: 16px 12px 8px;
+        position: sticky;
+        z-index: 99;
+        top: -20px;
     }
 
     .links-grid {
