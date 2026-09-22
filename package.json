@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --port 5151 --open",
     "build": "vite build",
     "preview": "vite preview"
   },
