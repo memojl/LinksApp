@@ -4,7 +4,7 @@
 	"version": "1.0.20",
 	"description": "LinksApp - Single Page Application",
 	"scope": "/",
-	"start_url": "https://memojl.github.io/LinksApp/",
+	"start_url": "https://links-app-chi.vercel.app/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#000000",
@@ -17,7 +17,7 @@
 	"api": "https://api.midominio.com",
 	"empresa": "Multiportal",
 	"entorno": "produccion",
-	"prefix" : "links_",
+	"prefix" : "venta_",
 	"debug": false,
 	"icons": [
 		{
