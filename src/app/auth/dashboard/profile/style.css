@@ -8,7 +8,7 @@
         margin: 0px 5px 25px;
     }
 
-    .card{
+    .card {
         min-width: 250px;
     }
 
@@ -49,6 +49,32 @@
         font-weight: 600;
     }
 
+    .info-bag {
+        margin: 12px 0px 6px;
+    }
+
+    .info-bag span {
+        padding: 2px 20px;
+        border-radius: 50px;
+        font-size: 15px;
+    }
+
+    .publico span {
+        border: 1px solid #6dff33;
+        color: #6dff33;
+        background-color: #6dff3348;
+    }
+
+    .privado span {
+        border: 1px solid #ff0000;
+        color: #ff0000;
+        background-color: #ff000048;
+    }
+
+    /*.info-bag span i {
+        font-size: 16px;
+    }*/
+
     .text-nombre {
         font-size: 24px;
         font-weight: bold;
@@ -64,6 +90,7 @@
         border-radius: 50%;
         padding: 8px 12px;
         border: 1px solid #fff;
+        height: auto;
     }
 
     @media (max-width: 768px) {

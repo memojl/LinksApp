@@ -1,5 +1,6 @@
-.login {
+.register {
     color: #fff;
+
     /*
     * {
         margin: 0;
@@ -15,13 +16,10 @@
 
     }
     */
-
     .login-page {
-
         display: grid;
         grid-template-columns: 58% 42%;
         min-height: 100vh;
-
     }
 
     /*====================
@@ -145,6 +143,12 @@
         color: #6DFF33;
         text-decoration: none;
     }
+
+    .inactivo {
+        color: #777 !important;
+        text-decoration: none;
+    }
+
 
     button {
         width: 100%;
